@@ -1,0 +1,67 @@
+# --- Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+*.egg
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# --- Virtual environments ---
+.venv/
+venv/
+env/
+ENV/
+
+# --- Jupyter ---
+.ipynb_checkpoints/
+
+# --- YOLO / Ultralytics training artifacts ---
+runs/
+wandb/
+yolo*.pt
+*.onnx
+*.engine
+*.torchscript
+*.tflite
+*.pb
+
+# --- Project-specific model checkpoints ---
+runs_detect_*.pt
+runs_detect_*.pt.*
+*best*.pt
+*last*.pt
+
+# --- Datasets and large assets ---
+Vehicle light detection.v2-head_tail_lights-v1.yolov11/
+*.zip
+*.tar
+*.tar.gz
+*.7z
+*.rar
+
+# --- Generated configs ---
+data.resolved.yaml
+
+# --- Test images / outputs ---
+predictions/
+outputs/
+
+# --- IDE / editor ---
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# --- OS ---
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# --- Logs ---
+*.log
+logs/
