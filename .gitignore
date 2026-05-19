@@ -22,7 +22,6 @@ ENV/
 # --- YOLO / Ultralytics training artifacts ---
 runs/
 wandb/
-yolo*.pt
 *.onnx
 *.engine
 *.torchscript
@@ -30,11 +29,6 @@ yolo*.pt
 *.pb
 
 # --- Project-specific model checkpoints ---
-runs_detect_*.pt
-runs_detect_*.pt.*
-*best*.pt
-*last*.pt
-
 # --- Datasets and large assets ---
 Vehicle light detection.v2-head_tail_lights-v1.yolov11/
 *.zip
