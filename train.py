@@ -1,7 +1,12 @@
+import os
 from pathlib import Path
 
+import torch
 import yaml
 from ultralytics import YOLO
+
+# Reduce CUDA memory fragmentation (recommended by PyTorch for OOM errors)
+os.environ["PYTORCH_CUDA_ALLOC_CONF"] = "expandable_segments:True"
 
 PROJECT_ROOT = Path(__file__).resolve().parent
 DATASET_DIR = PROJECT_ROOT / "Vehicle light detection.v2-head_tail_lights-v1.yolov11"
@@ -26,13 +31,16 @@ def build_resolved_yaml() -> Path:
 def main() -> None:
     data_yaml = build_resolved_yaml()
 
+    # Free any leftover GPU memory from previous runs
+    torch.cuda.empty_cache()
+
     model = YOLO("yolo26m.pt")
 
     model.train(
         data=str(data_yaml),
         epochs=40,
         imgsz=640,
-        batch=16,
+        batch=8,  # reduced from 16 to avoid CUDA OOM (increase once GPU memory is free)
         patience=20,
         optimizer="auto",
         lr0=0.01,
